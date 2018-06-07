@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   
+    <title>H A K </title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+          .modal {
+            text-align: center;
+            display:inline-block;
+            display: none; 
+            position:unset;
+            z-index: 1; 
+            left: -20;
+            top: -10;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(59, 3, 3); 
+            background-color: rgba(73, 6, 6, 0.699); 
+        }
+    
+        .modal-content {
+            text-align: center;
+            background-color: #020101;
+            margin: 10% auto; 
+            padding: 10px;
+           
+            width: 80%; 
+        }
+      body {
+        text-align: center;
+        font: 400 15px/1.8 Lato, sans-serif;
+        color: #777;
+        background-color:#000000;
+      }
+      h3 {
+        font-family: "cursive";
+        margin: 40px 0 30px 0;
+        letter-spacing: 10px; 
+        font-size: 30px;
+        color: rgb(255, 255, 255);
+      }
+      h2{
+        font-family: "fantasy";
+        color: rgb(49, 44, 44);
+
+      }
+      p{
+        font-size: 20px;
+        color: rgba(235, 141, 129, 0.507);
+        font-family: "OCR A Std, monospace";
+
+      }
+        .container {
+          text-align: center;
+          padding: 80px 120px;
+          }
+        .person {
+          border: 10px solid transparent;
+          margin-bottom: 25px;
+          width: 80%;
+          height: 80%;
+          opacity: 0.7;
+        }
+        .person:hover {
+            border-color: #000000;
+        }
+        .carousel-inner img {
+        -webkit-filter: lightyellow(90%);
+        filter: lightyellow(90%); /* make all photos black and white */ 
+        width: 100%; /* Set width to 100% */
+        margin: auto;
+        }
+        .carousel-caption h3 {
+        color: #fff !important;
+        }
+        @media (max-width: 600px) {
+        .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+        }
+        }
+        .bg-1 {
+        background: #2d2d30;
+        color: #000000;
+        }
+        .bg-1 h3 {color: rgb(0, 0, 0);}
+        .bg-1 p {font-style: italic;}
+        .list-group-item:first-child {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        }
+        .list-group-item:last-child {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        }
+        .thumbnail {
+        padding: 0 0 15px 0;
+        border: none;
+        border-radius: 0;
+        }
+        .thumbnail p {
+        margin-top: 15px;
+        color: rgb(0, 0, 0);
+        }
+        .btn {
+          padding: 10px 20px;
+          background-color: rgb(0, 0, 0);
+          color: #ff0000;
+          border-radius: 0;
+          transition: .2s;
+        }
+        .btn:hover, .btn:focus {
+          border: 1px solid #333;
+          background-color: rgb(255, 0, 0);
+          color: rgb(255, 0, 0);
+        }
+        .modal-header, h4, .close {
+        background-color: #333;
+        color: rgb(255, 0, 0) !important;
+        text-align: center;
+        font-size: 30px;
+        }
+        .modal-header, .modal-body {
+        padding: 40px 50px;
+        }
+        .nav-tabs li a {
+        color: #777;
+        }
+        #googleMap {
+        width: 100%;
+        height: 400px;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        } 
+        .navbar {
+          font-family:monospace;
+              
+             
+        margin-bottom: 0;
+        background-color: #440606;
+        border: 0;
+        font-size: 20px !important;
+        letter-spacing: 4px;
+        opacity: 0.9;
+        }
+        .navbar li a, .navbar .navbar-brand { 
+        color: #000000 !important;
+        }
+        .navbar-nav li a:hover {
+        color: rgb(255, 255, 255) !important;
+        }
+        .navbar-nav li.active a {
+        color: rgb(0, 0, 0) !important;
+        background-color: #c00000 !important;
+        }
+        .navbar-default .navbar-toggle {
+        border-color: transparent;
+        }
+        .open .dropdown-toggle {
+        color: #fff;
+        background-color: rgb(161, 0, 0) !important;
+        }
+        .dropdown-menu li a {
+        color: rgb(0, 0, 0) !important;
+        }
+        .dropdown-menu li a:hover {
+        background-color: red !important;
+        }
+        footer {
+        background-color: #2d2d30;
+        color: #ffffff;
+        padding: 32px;
+        }
+        footer a {
+        color: #0a0606;
+        }
+        footer a:hover {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        } 
+        .form-control {
+        border-radius: 0;
+        }
+        textarea {
+        resize: none;
+        }
+    
+        
+
+    </style>
+  </head>
+  
+
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+  <div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span> 
+  </button>
+  <a class="navbar-brand" href="#myPage">
+  <p> HAK </p>
+  </a>
+  </div>
+  <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="getotknowus.html">ABOUT</a></li>
+      <li><a href="ourfinest.html">OUR FINEST</a></li>
+      <li><a href="contacts.html">CONTACTS</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">QUIZ
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li><a href="appetizerQuiz.html">APPETIZERQUIZ</a> 
+        </li>
+          
+        
+        <li><a href="mainEntreeQuiz.html">MAINENTREEQUIZ</a></li>  
+        <li><a href="dessertQuiz.html">DESSERTQUIZ</a></li> 
+        </ul>
+      </li>
+  <li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+  <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="learnthroughvideos.html">VIDEO</a></li>
+  <li><a href="class.html">CLASS</a></li>  
+
+
+  </ul>
+  </li>
+  <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+  </ul>
+  </div>
+  </div>
+  </nav>
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <script>
+          function displayModal() {
+                      var modal = document.getElementById('myModal');
+                      modal.style.display = "block";
+                  }
+          function span() {
+             var modal = document.getElementById('myModal');
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "none";
+                  }
+                  
+          window.onclick = function(event) {
+                var modal = document.getElementById('myModal');
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+
+                  }
+          function displayModal2() {
+                      var modal = document.getElementById('myModal2');
+                      modal.style.display = "block";
+                  }
+          function span2() {
+             var modal = document.getElementById('myModal2');
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "none";
+                  }
+                  
+          window.onclick = function(event) {
+                var modal = document.getElementById('myModal2');
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+
+                  }
+          function displayModal3() {
+              var modal = document.getElementById('myModal3');
+              modal.style.display = "block";
+                  }
+          function span3() {
+             var modal = document.getElementById('myModal3');
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "none";
+                  }
+                  
+          window.onclick = function(event) {
+                var modal = document.getElementById('myModal3');
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+
+                  }
+        </script>
+      
+        </script>
+      
+
+    
+  
+  <div class="container">
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-4">
+          <br>
+             <h3>Appetizers</h3>
+            
+                <button class="button" id="myBtn" onclick="displayModal()">Information on Appetizers</button>
+                <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close"onclick = "span()" >&times;</span>
+                        <p1>
+                            <h2>What makes appetizers important during holidays?</h2>
+                            Appetizers is an important menu segments all 12 months of the year, but is most vital to driving restaurant and catering profits through December and January. Here are a few reasons to increase your appetizer options for the months of December, January and February.<br>
+                            1. Impulse—Whether it’s a catered event that you planned and have on the books or just a large group that made a reservation the same day, appetizers are usually an impulse buy. Having a few additional options on the regular menu and on the catering menu is always a good idea through Valentine’s Day. <br>     
+                            2. Convenience—Not all appetizers and hors d’oeuvres need to be scratch made in your kitchen. Performance Foodservice has a tremendous line of value added options under our Ridgecrest appetizer line. With options spanning Spanikopita, Crab Rangoons, Beef Tenderloin En Croute and Mini Crab Cakes, you're sure to find an option for your operation. These options have handmade quality and appeal without the time and labor investment that goes into scratch making hors d’oeuvres. <br>
+                            3.Profit—The appetizer and hors d’oeuvres segment is hugely profitable for restaurant and caterers. Selling these items by the piece is the best way to sell them for the optimal amount of profit.          <br>
+                            4.Opportunities—Having a robust hors d’oeuvres menu opens your business up to more opportunities to earn holiday business. Many groups and organizations have minimal budgets for holiday gatherings. A strong hors d’oeuvres selection gives people the option to have a “hors d’oeuvres” or “cocktail” party. These types of functions offer a lot of perceived value to your customers and their guests. <br>           
+                            5.Offsite Options—Appetizers and hors d’oeuvres usually travel very well in to-go packaging. This offers another revenue stream for your business and minimizes your expense. If you offer hors d’oeuvres packages to-go on trays or in disposable packaging, it enhances your revenue and minimizes your expense because you won't have to travel to or staff an offsite fully catered event! And, it provides another option to customers who want to enjoy your creations during the holiday season, but who don't have the budget for full catering.<br>
+                          <br>
+                          <h2>How can appetizers be attracting?
+                          </h2>
+                          <br>
+    
+                          First most please like and appreciate your own skills to make an appetizer, then is when others will find it attracting. Second add your own spice to your appetizer... make it special in your way. Third think of other people before before making your dish. Hopefully these tips were helpful!
+                          <br>
+                          <h2>Fun Facts</h2>
+                          <br>
+                          ..that Appetizers or Hors d'œuvre are food items served before the main courses of a meal?
+
+              <br>… that if there is an extended period between when guests arrive and when the meal is served (for example during a cocktail hour), these might also serve the purpose of sustaining guests during the wait, in the same way that aperitifs are served as a drink before meals?
+
+              <br>… that appetizers are sometimes served with no meal afterward and this is the case with many reception and cocktail party events?
+
+              <br>… that appetizers may be served at the table, as a part of the sit-down meal, or they may be served before sitting at the table?
+
+              <br>… that appetizers prior to a meal are either stationary or passed; with stationary appetizers are also referred to as "table appetizers" and passed appetizers are also referred to as "butler-style" or "butlered" appetizers.
+
+              <br>… that though any food served prior to the main course is technically an appetizers, the phrase is generally limited to individual items, not crudités, cheese or fruit?
+
+              <br>… that a glazed fig topped with mascarpone and wrapped with prosciutto is considered an "appetizers," whereas figs on a platter are not?
+
+              <br>… that a more substantial starter or first course served at the table might be referred to as an entrée (outside the U.S. and English Canada)?
+
+              <br>… that if there is an extended period between when guests arrive and when the meal is served (for example during a cocktail hour), these might also serve the purpose of sustaining guests during the wait, in the same way that aperitifs are served as a drink before meals?
+
+              <br>... that Appetizers are sometimes served with no meal afterward and this is the case with many reception and cocktail party events?
+
+              <br> … that Zakuski are hors d'oeuvre served in Russian cuisines and they usually are presented buffet style, it often consists of cured meats and fishes, various pickled vegetables such as carrots, cucumbers, and garlic, prepared salads, caviar, and breads. Zakuski are often offered with vodka.
+
+              <br> … that in China, appetizers are called lěng pán ("cold plate"), or qián cài ("before dish") in Mandarin?
+
+              <br>… that Zensai (before dish) is a Japanese hors d'œuvre
+            </p1>
+                    </div>
+                    </div>
+                    <br>
+                    
+                    <br>
+                    <h2>Best of Appetizers</h2>
+        <br>
+        <div class="col-sm-4">
+        <p>Chicken Salad</p>
+        <a href="https://www.foodnetwork.com/recipes/food-network-kitchen/chicken-salad-recipe-2011682" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+        <br>
+        <p> Mac and Cheese</p>
+        <a href="https://www.recipetineats.com/baked-mac-and-cheese/" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+        <br>
+        <p> Clam Chowder </p>
+        <a href="https://www.allrecipes.com/recipe/13041/my-best-clam-chowder/" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+      </div>
+     
+      
+  
+          </div>    
+      
+          
+   
+          &nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-4">
+            <br>
+            <h3>Entree</h3>
+            <button class="button" id="myBtn" onclick="displayModal2()">Information on Entrees</button>
+            <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <span class="close"onclick = "span2()">&times;</span>
+                    <p1>
+                      <h2> What is the difference between an appetizer and an entree?</h2><br>
+                      Entree in American English means main course, despite the original French meaning.
+
+                      This name is a sort of historical accident. Originally there were far more courses than just starters/appetizers, main course, and dessert. There have been a large variety of traditions, but a reasonably common meal structure was to have small appetizers (hors d'oeuvres), more substantial ones bordering on things you'd see as side dishes or half a main course now (entrées), then a large meat dish (plat principal, possibly). In North America the separate large meat dish disappeared from tradition over time, and effectively was folded into the entrées, and that name was retained for the main course.
+
+                      Similar things happened elsewhere, of course - most people don't have four course meals all the time - but the resulting name is essentially unique to American English. In the rest of the English speaking world, the original terms largely remained.
+                      <br>
+                      <h2>How can you make an entree fulfilling?</h2>
+                      Entrees are originally supposed to be fulffiling... so in order for them to be what they are supposed to be one must use ingredients that full ones stomach. One shall serve enough amount of the dish. And do what you think is right while making the dish!!
+                      <br><h2>Facts about Entrees</h2><br>
+                      The stages of the meal underwent several significant changes between the mid-16th and mid-17th century, and notably, the entrée became the second stage of the meal, and potage became the first. At this point, the term “entrée” had lost its literal meaning and had come to refer to a certain type of dish, unrelated to its place in the meal. The cookbooks and dictionaries of the 17th and 18th centuries rarely discuss directly the composition of the dishes for each stage of the meal, though they routinely designate recipes or include lists of dishes appropriate to each stage. Nevertheless, entrées and the dishes of the other stages of the meal can be distinguished from each other by certain characteristics, such as their ingredients, cooking methods, and serving temperature.[2]:21
+
+                      In the 17th, 18th, and 19th centuries, entrées, on meat days,[4] included most butchers’ meats (but not ham), suckling pig, fowl, furred and feathered game, and offal. Eggs, on meat days, were never served as entrées; they were served only as entremets. Vegetables often made up part of the sauce or garnish, but entrées were always meat dishes; vegetable dishes were served only as entremets.[2]:21–31
+
+                      On lean days, fish and eggs replaced meat and fowl in every stage of the meal; and on these days, eggs did appear as entrées. Few entrées were composed only of vegetables. During Lent, though, vegetable entrées (“entrées en racines”, encompassing all vegetables, not just “roots”), were sometimes served.[2]:32–43
+
+                      Moist cooking methods were characteristic of this stage of the meal, typical preparations being sautés, ragoûts, and fricassées. Meat or fowl (but not fish) might be roasted, but it was first wrapped in paper, or stuffed with a forcemeat, or barded with herbs or anchovies, or finished in a sauce, or prepared in some other way to keep the dish from browning and crisping like a true roast. Savory pies and pastries were baked in dry heat, but the enclosed meat cooked in its own steam and juices.[2]:12–15
+
+                      All entrées were served hot, and this was a salient feature of entrées until the 19th century.[2]:25–30
+
+                      These distinctions were at first loosely observed, or perhaps more accurately, the “rules” were in a formative stage for several decades. By the early 18th century, specific ingredients and cooking methods were increasingly confined to only one stage of the meal.
+
+                      In the mid-18th century, entrées were increasingly divided into new categories based on the content and preparation of the dish. “Hors d'œuvres”, which, in the late 17th century, were served at several points during the meal, were considered a type of entrée in the 18th century; but by the 19th century, they had become a distinct stage of the meal.[2]:75–76 Large, whole joints of meat (usually beef or veal) and very large fowl (turkey and geese) were categorized as grandes or grosses entrées. When roasted, these same joints and fowl were called “spit-roasted entrées” (entrées de broche); they were always served with a sauce to distinguish them from true roasts. When boiled, a joint of beef was called the “le bouilli”; this was generally the first of the entrées consumed in the meal, after the potages and hors d’œuvres. In the late 18th century, the practice arose of removing the empty soup tureens and replacing them with additional grosses entrées or entrées de broche; these replacement dishes were commonly called “relevés”; they were last of the entrées consumed at the meal, though they often appear on menus right after the potages. Taken together, all these bulky dishes were called “substantial entrées” (fortes entrées).[2]:76-77
+
+                      The most numerous of the entrées at any meal were the “ordinary entrées” (entrées ordinaires), consumed between the bouilli and the relevés. In composition, they were distinguished from the fortes entrées by the relatively small size of their ingredients. Small fowl could be served whole; but large fowl and large joints of meat were cut into pieces or fillets. Despite the designation “ordinary”, these entrées were much more elaborate and refined than fortes entrées.
+                                            
+            
+                        <br>
+        
+        </p1>
+                </div>
+                </div>
+                <br>
+                
+                <br>
+                <h2>Best of Main Entrees</h2>
+                <br>
+          
+              
+             <p>Le Burger Extravagant</p>
+              <a href="http://www.myrecipes.com/recipe/classic-burger" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+              <br>
+              <p> Pan-Seared Chicken Breast with Shallots </p>
+              <a href="https://www.allrecipes.com/recipe/76895/pan-seared-chicken-breasts-with-shallots/" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>                <br>
+              <p> Beer Steamed Lobster Tails </p>
+              <a href="http://www.foodnetwork.ca/recipe/beer-steamed-lobster-tails/7211/" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+        </div>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-4">
+            <h3>Dessert</h3>
+            
+            <button class="button" id="myBtn" onclick="displayModal3()">Information on Desserts</button>
+            <div id="myModal3" class="modal">
+            <div class="modal-content">
+                <span class="close"onclick = "span3()">&times;</span>
+                    <p1>
+                      <h2>How can you make your desserts cozy?</h2><br>
+                      Desserts are supposed to be sweet, beutiful and cozy. Yes, desserts are supposed to be cozy. The way you can make them cozy is by adding vibrant and sweet colors to them so people are appealed by their looks. Now when you have conquered the looks being cozy, you have to make them tastes cozy. The way you cam do that is by making them soft and slippery and smoothing. 
+                      <br><h2>What is a real dessert?</h2><br>
+                      When conceiving a dessert for a dessert list, it is important to answer several questions:
+
+                      1. What is the style of the dishes of which the menu is comprised?
+                      2. Does the restaurant serve heavily spiced foods, bold flavored, ethnic inspired or purely ethnic
+                      dishes?
+                      3. Are the savory dishes presented in a rustic style or do they embody a more precise minimalist
+                      aesthetic approach?
+                      4. Is it appropriate for the pastry chef to borrow ingredients from the savory pantry to infuse desserts
+                      with flavors that echo but don’t repeat the flavor profile found in first courses and main dishes on
+                      the menu?
+                      Think also about balancing the menu of offerings.
+                      5. Does a lighter, less fat-laden entrée call for a richer dessert? Just as sommeliers are educated to
+                      suggest appropriate food and wine pairings, likewise servers need to be educated to lead customers
+                      to choose an appropriate dessert at the end of a meal, being conscious of what the diner ordered up
+                      to that point.
+                      6. Or, by contrast, might a richer main dish require a lighter dessert to cap off the meal? The pastry
+                      chef should be in sync with the chef whose ideas drive the rest of the menu. However, whichever
+                      direction the pastry chef takes, all of the items on the dessert list should meet the following
+                      criteria.
+
+                      a. Flavor rules—the components of the dessert should each complement the other with flavor
+                      notes all in harmony.
+                      b. A variety of contrasting textures should be evident visually and then, when consumed,
+                      textural and flavor contrasts should be perceived by the diner.
+                      c. Plating style should be in keeping with the plating of the rest of the menu.
+                      d. Nothing gratuitous should appear on the dessert plate (don’t resort to using mint leaves just
+                      because it’s easy, if inappropriate.)
+                      e. Garnishes should be edible and in keeping with the overall style and flavor profile of the
+                      dessert.
+                      f. What is the “Wow!” effect? How to turn heads as servers deliver dessert? 
+                      <br><h2>Facts about Desserts</h2><br>
+                      October is National Dessert Month.
+                      October 14th is National Dessert Day.
+                      Chocolate chips were invented after chocolate chip cookies.
+                      The “German” of German chocolate cake fame was actually a man named Samuel German, who was an employee of an American chocolate company.
+                      What we commonly call “Baked Alaska” was dubbed as such by the famous Delmonico’s Restaurant in New York City in 1876 to celebrate Alaska’s annexation.
+                      The world’s largest gingerbread house topped out at 2,520 square feet and contained 35.8 million calories.
+                      Girl Scout cookies were originally homemade.
+                      Boston cream pie is actually a cake.
+                      As of 2010, Armenia holds the title for the world’s biggest chocolate bar, which weighed over 9,000 pounds.
+                                      
+                        <br>
+        
+        </p1>
+                </div>
+                </div>
+               
+                <br>
+                <br>
+                <h2>Best of Desserts</h2>
+                <br>
+          <p>Caramel Pecan Cheesecake Recipe</p>
+          <a href="https://www.tasteofhome.com/recipes/caramel-pecan-cheesecake" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+          <br>
+          <p> Oreo Ice Cream Cake Recipe</p>
+          <a href="https://lilluna.com/cookies-and-cream-ice-cream-cake/" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+          <br>
+          <p> Apple Pie </p>
+          <a href="https://www.allrecipes.com/recipe/12682/apple-pie-by-grandma-ople/" target="_blank"><button type="button" class="btn btn-default">Learn More</button></a><br>
+      </div>
+             
+        </div>
+
+        
+           
+          </div>
+          
+         
+          
+      
+    </div>
+    
+    <embed src="song.mp3" height= 0px; loop="true" autobuffer>
+ 
+      
+
+              
+              
+        
+       
+      
+  
+
+
+  </body>
+</html>
